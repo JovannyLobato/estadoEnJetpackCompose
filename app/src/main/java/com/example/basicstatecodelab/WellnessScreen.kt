@@ -20,6 +20,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableStateOf
 import com.example.basicstatecodelab.WellnessTasksList
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.toMutableStateList
+import com.example.basicstatecodelab.WellnessTask
+
 
 @Composable
 fun WellnessTaskItem(
@@ -62,10 +66,16 @@ fun WellnessTaskItem(taskName: String, modifier: Modifier = Modifier) {
 }
 
 
+
+
 @Composable
 fun WellnessScreen(modifier: Modifier = Modifier) {
     Column(modifier = modifier) {
         StatefulCounter()
-        WellnessTasksList()
+
+        val list = remember { getWellnessTasks().toMutableStateList() }
+        WellnessTasksList(list = list, onCloseTask = { task -> list.remove(task) })
     }
 }
+
+private fun getWellnessTasks() = List(30) { i -> WellnessTask(i, "Task # $i") }
