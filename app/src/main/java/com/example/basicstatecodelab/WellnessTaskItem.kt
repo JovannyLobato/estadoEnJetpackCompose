@@ -1,6 +1,5 @@
 package com.example.basicstatecodelab
 
-import WellnessTaskItem
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -27,7 +26,8 @@ fun WellnessTaskItem(
     modifier: Modifier = Modifier
 ) {
     Row(
-        modifier = modifier, verticalAlignment = Alignment.CenterVertically
+        modifier = modifier,
+        verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
             modifier = Modifier
